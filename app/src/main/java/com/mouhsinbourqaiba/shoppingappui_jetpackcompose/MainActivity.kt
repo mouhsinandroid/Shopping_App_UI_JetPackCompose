@@ -3,41 +3,36 @@ package com.mouhsinbourqaiba.shoppingappui_jetpackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mouhsinbourqaiba.shoppingappui_jetpackcompose.ui.theme.ShoppingAppUIJetPackComposeTheme
+import com.mouhsinbourqaiba.shoppingappui_jetpackcompose.ui.theme.GroceryAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ShoppingAppUIJetPackComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+            MainTheme {
+                HomeScreen()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun MainTheme(content: @Composable () -> Unit) {
+    GroceryAppTheme {
+        Surface(color = MaterialTheme.colors.background) {
+            content()
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    ShoppingAppUIJetPackComposeTheme {
-        Greeting("Android")
+    MainTheme {
+        HomeScreen()
     }
 }
